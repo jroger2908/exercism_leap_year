@@ -1,14 +1,11 @@
 class Year
   VERSION = 1
   def self.leap?(year)
-    if year % 400 == 0
-      true
-    elsif year % 100 == 0
-      false
-    elsif year % 4 == 0
-      true
-    else
-      false
-    end
+    return false if divisible_by?(year, 100) && !divisible_by?(year, 400)
+    divisible_by?(year, 4)
+  end
+
+  def self.divisible_by?(year, num)
+    year % num == 0
   end
 end
